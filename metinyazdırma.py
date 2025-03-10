@@ -1,68 +1,34 @@
-def metin_kaydet_yazdir():
-    # Kullanıcıdan alınan metni kaydetmek için
-    text = input("Lütfen metninizi girin: ")
+# 1. Kullanıcıdan dosya adını alalım
+filename = "metinyazma.txt"
 
-    # Metni .txt dosyasına yazmak için
-    with open("metin.txt", "w") as file:
-        file.write(text)
+# Kullanıcıdan metin aldığımız kısım
+user_input = input("Bir metin girin ve dosyaya yazalım: ")
 
-def satir_kaydet_yazdir():
-    # Kullanıcıdan alınan 5satır verisini kaydetmek için
-    numbers = []
-    for i in range(5):
-        while True:
-            try:
-                number = int(input(f"Satır {i+1} numarasını girin: "))
-                if number < 0 or number > 100:
-                    print("Lütfen bir sayı Girin.")
-                else:
-                    numbers.append(number)
-                    break
-            except ValueError:
-                print("Lütfen bir sayı Girin.")
+# Dosyayı yazma moduna aldık
+with open(filename, 'w') as file:
+    file.write(user_input)
 
-    # Kaydedilen satırları .txt dosyasına yazmak için
-    with open("satirlar.txt", "w") as file:
-        for number in numbers:
-            file.write(str(number) + "\n")
+# 2. Yazılan dosyayı okuyup ekrana yazdır
+print("\nDosya içeriği:")
+with open(filename, 'r') as file:
+    content = file.read()
+    print(content)
 
-def metin_yazdir():
-    try:
-        # Metni .txt dosyasını okumasak için
-        with open("metin.txt", "r") as file:
-            print(file.read())
-    except FileNotFoundError:
-        print("Dosya bulunamadı.")
+# 3. Kullanıcıdan 5 farklı satır alalım ve bu satırları dosyaya ekleyelim.
+print("\n5 farklı satır girin (her satırdan sonra Enter'a basın):")
+lines = []
+for i in range(5):
+    line = input(f"Satır {i+1}:")
+    lines.append(line)
 
-def satir_yazdir():
-    try:
-        # Satırları .txt dosyasını okumasak için
-        with open("satirlar.txt", "r") as file:
-            for i, number in enumerate(file.readlines()):
-                if i == 0:
-                    print(f"Satır {i+1}: ", end="")
-                else:
-                    print(f"Satır {i+1}: ", end="")
-                print(number.strip())
-    except FileNotFoundError:
-        print("Dosya bulunamadı.")
+# Dosyaya satır satır yazma işlemi (append)
+with open(filename, 'a') as file:
+    for line in lines:
+        file.write(line + '\n')
 
-def main():
-    while True:
-        print("\n1. Metni Kaydet & Yazdır")
-        print("2. Satırları Kaydet & Yazdır")
-        print("3. Çıkış Yap")
-        choice = input("Lütfen bir sayı seçin: ")
-        if choice == "1":
-            metin_kaydet_yazdir()
-            metin_yazdir()
-        elif choice == "2":
-            satir_kaydet_yazdir()
-            satir_yazdir()
-        elif choice == "3":
-            break
-        else:
-            print("Lütfen bir sayı Girin.")
-
-if __name__ == "__main__":
-    main()
+# 4. Dosyayı tekrar okuyalım ve satır satır ekrana yazdıralım
+print("\nDosya içeriği (satır satır):")
+with open(filename, 'r') as file:
+    lines_in_file = file.readlines()
+    for line in lines_in_file:
+        print(line.strip())
