@@ -50,6 +50,8 @@ from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
 
+---
+
 ### 2. Standartlaştırma (Z-Score Normalizasyonu)
 
 **Formül:**
@@ -61,6 +63,8 @@ from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
+---
+
 ### 3. MaxAbs Scaling
 Verileri -1 ile 1 arasında ölçeklendirir. Özellikle sparse (seyrek) matrisler için uygundur çünkü 0 değerlerini değiştirmez.
 
@@ -69,6 +73,8 @@ from sklearn.preprocessing import MaxAbsScaler
 
 scaler = MaxAbsScaler()
 X_scaled = scaler.fit_transform(X)
+
+---
 
 ### 4. Robust Scaler
 Aykırı değerlere karşı dayanıklıdır. Medyan ve çeyrekler arası aralığı (IQR) kullanır.
@@ -79,6 +85,8 @@ from sklearn.preprocessing import RobustScaler
 scaler = RobustScaler()
 X_scaled = scaler.fit_transform(X)
 
+---
+
 ### Hangi Durumda Hangi Ölçekleme Yöntemi Kullanılır?
 | Ölçekleme Yöntemi | Uygun Olduğu Durumlar                          |
 | ----------------- | ---------------------------------------------- |
@@ -86,6 +94,8 @@ X_scaled = scaler.fit_transform(X)
 | StandardScaler    | Veriler normal dağılıma yakınsa                |
 | RobustScaler      | Aykırı değerlerin yoğun olduğu veri setlerinde |
 | MaxAbsScaler      | Seyrek (sparse) veri yapısında                 |
+
+---
 
 ### Sonuç
 Özellik ölçekleme, makine öğrenmesi projelerinde genellikle göz ardı edilen ancak model performansı üzerinde büyük etkisi olan bir adımdır. Doğru ölçekleme yöntemi seçilerek modelin hem doğruluğu hem de eğitim süresi iyileştirilebilir. Her zaman veri setinin yapısına göre en uygun yöntemi belirleyerek ilerleyin.
