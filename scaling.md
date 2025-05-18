@@ -49,6 +49,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
+```
 
 ---
 
@@ -58,10 +59,12 @@ X_scaled = scaler.fit_transform(X)
 X_scaled = (X - μ) / σ
 
 **Python Örneği:**
+```python
 from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
+```
 
 ---
 
@@ -69,10 +72,12 @@ X_scaled = scaler.fit_transform(X)
 Verileri -1 ile 1 arasında ölçeklendirir. Özellikle sparse (seyrek) matrisler için uygundur çünkü 0 değerlerini değiştirmez.
 
 **Python Örneği:**
+```python
 from sklearn.preprocessing import MaxAbsScaler
 
 scaler = MaxAbsScaler()
 X_scaled = scaler.fit_transform(X)
+```
 
 ---
 
@@ -80,10 +85,12 @@ X_scaled = scaler.fit_transform(X)
 Aykırı değerlere karşı dayanıklıdır. Medyan ve çeyrekler arası aralığı (IQR) kullanır.
 
 **Python Örneği:**
+```python
 from sklearn.preprocessing import RobustScaler
 
 scaler = RobustScaler()
 X_scaled = scaler.fit_transform(X)
+```
 
 ---
 
